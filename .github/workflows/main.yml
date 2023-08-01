@@ -17,6 +17,7 @@ jobs:
         run: |
           echo "Current directory: $PWD"
           echo "inside the directory: $ls"
+          cd /home/runner/.ssh/known_hosts
 
 
       - name: Set up SSH Key
@@ -25,9 +26,10 @@ jobs:
           whoami
           echo "${{ secrets.JOOMLA_EC2_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa    
-          ssh-keyscan 52.163.44.80 >> /home/runner/work/joomlaCI-CD/joomlaCI-CD
-          cat '/home/runner/work/joomlaCI-CD/joomlaCI-CD'
+          ssh-keyscan 52.163.44.80 >> /home/runner/.ssh/known_hosts
+          cat '/home/runner/.ssh/known_hosts'
           echo "end of ssh key setup"
+          
 
       - name: Connect to EC2 and Run Commands
         run: |
