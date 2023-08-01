@@ -23,7 +23,7 @@ jobs:
         run: |
           mkdir -p ~/.ssh
           whoami
-          echo "${{ secrets.joomla_EC2_key }}" > ~/.ssh/id_rsa
+          echo "${{ secrets.JOOMLA_EC2_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa    
           ssh-keyscan 52.163.44.80 >> /home/runner/.ssh/known_hosts
           cat '/home/runner/.ssh/known_hosts'
