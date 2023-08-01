@@ -31,7 +31,7 @@ jobs:
 
       - name: Connect to EC2 and Run Commands
         run: |
-          ssh -vvv -o StrictHostKeyChecking=no root@52.168.44.80
+          ssh -vvv -o StrictHostKeyChecking=no root@52.163.44.80
            echo "connection made"
      # - name: Connect to EC2 and Copy Files
        # run: |
