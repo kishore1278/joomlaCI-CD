@@ -1,0 +1,38 @@
+name: Deploy to EC2
+
+on:
+  push:
+    branches:
+      - main
+
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - name: Print Current Directory
+        run: |
+          echo "Current directory: $PWD"
+          echo "inside the directory: $ls"
+
+
+      - name: Set up SSH Key
+        run: |
+          mkdir -p ~/.ssh
+          whoami
+          echo "${{ secrets.joomla_EC2_key }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa    
+          ssh-keyscan 52.163.44.80 >> /home/runner/.ssh/known_hosts
+          cat '/home/runner/.ssh/known_hosts'
+          echo "end of ssh key setup"
+
+      - name: Connect to EC2 and Run Commands
+        run: |
+          ssh -vvv -o StrictHostKeyChecking=no root@52.168.44.80
+           echo "connection made"
+     # - name: Connect to EC2 and Copy Files
+       # run: |
+        #  ssh -vvv -o StrictHostKeyChecking=no root@52.90.87.244 "mkdir -p /var/www/html/sai && cd /var/www/html/sai && git init && git clone https://github.com/sairevanthreddy/wordpress.git"
