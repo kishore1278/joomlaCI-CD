@@ -25,7 +25,7 @@ jobs:
           whoami
           echo "${{ secrets.JOOMLA_EC2_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa    
-          ssh-keyscan 52.163.44.80 >> /home/runner/.ssh/known_hosts
+          ssh-keyscan 52.163.44.80 >> /home/runner/work/joomlaCI-CD/joomlaCI-CD
           cat '/home/runner/work/joomlaCI-CD/joomlaCI-CD'
           echo "end of ssh key setup"
 
