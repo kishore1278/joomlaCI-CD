@@ -26,7 +26,7 @@ jobs:
           echo "${{ secrets.JOOMLA_EC2_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa    
           ssh-keyscan 52.163.44.80 >> /home/runner/.ssh/known_hosts
-          cat '/home/runner/.ssh/known_hosts'
+          cat '/home/runner/work/joomlaCI-CD/joomlaCI-CD'
           echo "end of ssh key setup"
 
       - name: Connect to EC2 and Run Commands
